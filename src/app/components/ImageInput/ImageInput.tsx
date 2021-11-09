@@ -1,0 +1,28 @@
+import React, { ChangeEvent, useState } from 'react';
+import styles from './ImageInput.module.css';
+
+export default function ImageInput() {
+  const [imgURL, setImgURL] = useState<string | null>(null);
+
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    if (!event.target.files || event.target.files.length === 0) {
+      return;
+    }
+    const file = event.target.files[0];
+    const newImgURL = URL.createObjectURL(file);
+    setImgURL(newImgURL);
+  };
+
+  return (
+    <label className={styles.fileUpload}>
+      <input
+        className={styles.input}
+        type="file"
+        accept="image/png, image/jpeg"
+        onChange={handleChange}
+      />
+      Or upload an image
+      {imgURL && <img src={imgURL} />}
+    </label>
+  );
+}
