@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Quicksand:wght@400;700&display=swap');
+
 *,
 *::before,
 *::after {
@@ -14,10 +16,20 @@
 
   /* FONT */
   --font-family: arial, helvetica, sans-serif;
+  --font-headline: 'Josefin Sans', sans-serif;
 }
 
 body {
   margin: 0;
   background-color: var(--color-background);
   font-family: var(--font-family);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-headline);
 }
