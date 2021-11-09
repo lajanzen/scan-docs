@@ -1,3 +1,23 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  /* COLORS:  */
+  --color-background: #dceeed;
+  --color-primary: #2ec4b6;
+  --color-secondary: #ff9f1c;
+  --color-tercary: #c4c4c4;
+  --color-text: #644f4f;
+
+  /* FONT */
+  --font-family: arial, helvetica, sans-serif;
+}
+
 body {
   margin: 0;
+  background-color: var(--color-background);
+  font-family: var(--font-family);
 }
