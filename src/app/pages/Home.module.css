@@ -1,0 +1,37 @@
+.container {
+  display: grid;
+  gap: 2rem;
+  grid-template-rows: 25rem auto auto 1fr;
+  justify-items: center;
+  text-align: center;
+}
+
+.img {
+  background-color: #2ec4b6;
+  padding: 4rem 1rem 1rem 0;
+  border-radius: 2rem;
+  align-self: end;
+}
+
+button {
+  background-color: #ff9f1c;
+  color: white;
+  border: none;
+  padding: 0.8rem 2rem;
+  border-radius: 2rem;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+button:active {
+  background-color: #c4780e;
+}
+
+button:disabled {
+  background-color: #535351;
+}
+
+p {
+  color: #757575;
+  font-size: 0.8rem;
+}
