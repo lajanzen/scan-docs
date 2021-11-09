@@ -22,6 +22,15 @@ export default function Styleguide(): JSX.Element {
           style={{
             width: 30,
             height: 30,
+            background: 'var(--color-background)',
+            border: 'black solid 0.1em',
+            borderRadius: '50%',
+          }}
+        />
+        <div
+          style={{
+            width: 30,
+            height: 30,
             background: 'var(--color-secondary)',
             borderRadius: '50%',
           }}
