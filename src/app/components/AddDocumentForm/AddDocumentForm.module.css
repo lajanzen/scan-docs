@@ -1,0 +1,19 @@
+.form {
+  display: grid;
+  gap: 1rem;
+  justify-items: center;
+}
+
+.input {
+  padding: 0.5em 1em;
+}
+
+.button {
+  background-color: #ff9f1c;
+  color: white;
+  border: none;
+  padding: 0.8rem 0.8em;
+  border-radius: 2rem;
+  font-weight: bold;
+  width: fit-content;
+}

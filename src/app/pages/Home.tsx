@@ -56,7 +56,7 @@ export default function Home(): JSX.Element {
       {recognizedText ? (
         <>
           <AddDocumentForm text={recognizedText} />
-          <p>{recognizedText}</p>
+          <p className={styles.recognizedText}>{recognizedText}</p>
         </>
       ) : (
         <ImageInput onImageUpload={setImgURL} />

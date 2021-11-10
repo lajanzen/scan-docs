@@ -32,7 +32,10 @@ button:disabled {
   filter: grayscale() brightness(50%);
 }
 
-p {
-  color: #757575;
+.recognizedText {
+  color: var(--color-text);
   font-size: 0.8rem;
+  width: 20em;
+  border: var(--color-text) solid 0.1em;
+  padding: 1em;
 }

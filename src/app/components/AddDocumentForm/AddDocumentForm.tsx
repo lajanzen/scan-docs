@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import styles from './AddDocumentForm.module.css';
 
 type AddDocumentFormProps = {
   text: string;
@@ -26,14 +27,15 @@ export default function AddDocumentForm({
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className={styles.form} onSubmit={handleSubmit}>
       <input
+        className={styles.input}
         type="text"
-        placeholder="Enter title"
+        placeholder="Enter document title"
         value={title}
         onChange={(event) => setTitle(event.target.value)}
       />
-      <input type="submit" />
+      <input className={styles.button} type="submit" value="Text speichern" />
     </form>
   );
 }
