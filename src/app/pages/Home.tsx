@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import ImageInput from '../components/ImageInput/ImageInput';
 import styles from './Home.module.css';
-import Tesseract from 'tesseract.js';
+import { recognizeText } from '../utils/ocr';
 
 export default function Home(): JSX.Element {
   const [imgURL, setImgURL] = useState<string | null>(null);
@@ -19,12 +19,9 @@ export default function Home(): JSX.Element {
         disabled={imgURL === null}
         onClick={() => {
           if (imgURL) {
-            Tesseract.recognize(imgURL, 'eng', {
-              logger: (message) => console.log(message.progress),
-            }).then((result) => {
-              const text = result.data.text;
-              setRecognizedText(text);
-            });
+            recognizeText(imgURL, ({ progress, status }) => {
+              console.log(progress, status);
+            }).then(setRecognizedText);
           }
         }}
       >
