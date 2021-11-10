@@ -1,11 +1,39 @@
 import React, { useState } from 'react';
 import ImageInput from '../components/ImageInput/ImageInput';
 import styles from './Home.module.css';
-import { recognizeText } from '../utils/ocr';
+import { RecognizeProgress, recognizeText } from '../utils/ocr';
+import Progress from '../components/Progress/Progress';
 
 export default function Home(): JSX.Element {
   const [imgURL, setImgURL] = useState<string | null>(null);
   const [recognizedText, setRecognizedText] = useState<string | null>(null);
+  const [recognizeProgress, setRecognizeProgress] =
+    useState<RecognizeProgress | null>(null);
+
+  let content;
+
+  if (recognizeProgress) {
+    content = (
+      <Progress
+        progress={recognizeProgress.progress * 100}
+        status={recognizeProgress.status}
+      />
+    );
+  } else if (imgURL) {
+    content = (
+      <button
+        onClick={() => {
+          if (imgURL) {
+            recognizeText(imgURL, setRecognizeProgress).then(setRecognizedText);
+          }
+        }}
+      >
+        Convert
+      </button>
+    );
+  } else {
+    content = <button>Scan</button>;
+  }
 
   return (
     <div className={styles.container}>
@@ -15,18 +43,9 @@ export default function Home(): JSX.Element {
         alt="scan-logo"
       />
       <p>{imgURL ? 'Image has been uploaded' : 'Turn any document into PDF'}</p>
-      <button
-        disabled={imgURL === null}
-        onClick={() => {
-          if (imgURL) {
-            recognizeText(imgURL, ({ progress, status }) => {
-              console.log(progress, status);
-            }).then(setRecognizedText);
-          }
-        }}
-      >
-        Scan
-      </button>
+
+      {content}
+
       {recognizedText ? (
         <p>{recognizedText}</p>
       ) : (
