@@ -26,11 +26,7 @@ export default function ImageInput({ onImageUpload }: ImageInputProps) {
         accept="image/png, image/jpeg"
         onChange={handleChange}
       />
-      {imgURL ? (
-        <img src={imgURL} className={styles.preview} />
-      ) : (
-        'Or upload an image'
-      )}
+      {!imgURL && 'Or upload an image'}
     </label>
   );
 }
