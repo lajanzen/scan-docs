@@ -28,7 +28,7 @@ button:active {
 }
 
 button:disabled {
-  background-color: #535351;
+  filter: grayscale() brightness(50%);
 }
 
 p {
