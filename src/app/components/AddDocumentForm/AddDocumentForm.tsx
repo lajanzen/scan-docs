@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import usePostDocument from '../../utils/usePostDocument';
 import styles from './AddDocumentForm.module.css';
 
 type AddDocumentFormProps = {
@@ -9,7 +10,7 @@ export default function AddDocumentForm({
   text,
 }: AddDocumentFormProps): JSX.Element {
   const [title, setTitle] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
+  const { isLoading, postDocument } = usePostDocument();
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -18,15 +19,7 @@ export default function AddDocumentForm({
       title,
       text,
     };
-    setIsLoading(true);
-    await fetch('https://json-server.machens.dev/docs', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(document),
-    });
-    setIsLoading(false);
+    await postDocument(document);
     setTitle('');
   };
 
