@@ -17,3 +17,11 @@
   font-weight: bold;
   width: fit-content;
 }
+
+.button:active {
+  background-color: #c4780e;
+}
+
+.button:disabled {
+  filter: grayscale() brightness(50%);
+}

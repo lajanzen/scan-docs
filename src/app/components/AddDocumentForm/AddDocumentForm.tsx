@@ -9,21 +9,25 @@ export default function AddDocumentForm({
   text,
 }: AddDocumentFormProps): JSX.Element {
   const [title, setTitle] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = (event: React.FormEvent) => {
+  const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
 
     const document = {
       title,
       text,
     };
-    fetch('https://json-server.machens.dev/docs', {
+    setIsLoading(true);
+    await fetch('https://json-server.machens.dev/docs', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(document),
     });
+    setIsLoading(false);
+    setTitle('');
   };
 
   return (
@@ -35,7 +39,12 @@ export default function AddDocumentForm({
         value={title}
         onChange={(event) => setTitle(event.target.value)}
       />
-      <input className={styles.button} type="submit" value="Text speichern" />
+      <input
+        className={styles.button}
+        type="submit"
+        value="Text speichern"
+        disabled={!title || isLoading}
+      />
     </form>
   );
 }
