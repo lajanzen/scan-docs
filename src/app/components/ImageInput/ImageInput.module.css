@@ -1,0 +1,12 @@
+.input {
+  display: none;
+}
+
+.fileUpload {
+  color: var(--color-secondary);
+  text-decoration: underline;
+}
+
+.preview {
+  max-width: 10rem;
+}
