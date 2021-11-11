@@ -1,36 +1,28 @@
 import React, { useState } from 'react';
 import ImageInput from '../components/ImageInput/ImageInput';
 import styles from './Home.module.css';
-import { RecognizeProgress, recognizeText } from '../utils/ocr';
 import Progress from '../components/Progress/Progress';
 import AddDocumentForm from '../components/AddDocumentForm/AddDocumentForm';
+import useRecognizeText from '../utils/useRecognizeText';
 
 export default function Home(): JSX.Element {
   const [imgURL, setImgURL] = useState<string | null>(null);
-  const [recognizedText, setRecognizedText] = useState<string | null>(null);
-  const [recognizeProgress, setRecognizeProgress] =
-    useState<RecognizeProgress | null>(null);
+  const { text, progress, recognize } = useRecognizeText(imgURL);
 
   let content;
 
-  if (!recognizedText && recognizeProgress) {
-    console.log(recognizeProgress);
+  if (!text && progress) {
     content = (
-      <Progress
-        progress={recognizeProgress.progress * 100}
-        status={recognizeProgress.status}
-      />
+      <Progress progress={progress.progress * 100} status={progress.status} />
     );
-  } else if (!recognizedText && imgURL) {
+  } else if (!text && imgURL) {
     content = (
       <>
         <p>Image has been uploaded</p>
         <button
           onClick={() => {
             if (imgURL) {
-              recognizeText(imgURL, setRecognizeProgress).then(
-                setRecognizedText
-              );
+              recognize();
             }
           }}
         >
@@ -53,10 +45,10 @@ export default function Home(): JSX.Element {
 
       {content}
 
-      {recognizedText ? (
+      {text ? (
         <>
-          <AddDocumentForm text={recognizedText} />
-          <p className={styles.recognizedText}>{recognizedText}</p>
+          <AddDocumentForm text={text} />
+          <p className={styles.text}>{text}</p>
         </>
       ) : (
         <ImageInput onImageUpload={setImgURL} />
