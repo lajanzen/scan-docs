@@ -1,6 +1,8 @@
 import React from 'react';
+import styles from './DocPreview.module.css';
 
-type DocPreviewProps = {
+export type DocPreviewProps = {
+  id?: number;
   title: string;
   text: string;
 };
@@ -10,9 +12,11 @@ export default function DocPreview({
   text,
 }: DocPreviewProps): JSX.Element {
   return (
-    <article>
-      <h2>{title}</h2>
-      <p>{text}</p>
+    <article className={styles.container}>
+      <a className={styles.link} href="#">
+        {title}
+      </a>
+      <p className={styles.text}>{text}</p>
     </article>
   );
 }
