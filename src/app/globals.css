@@ -9,6 +9,7 @@
 :root {
   /* COLORS:  */
   --color-background: #dceeed;
+  --color-card-background: #fff;
   --color-primary: #2ec4b6;
   --color-secondary: #ff9f1c;
   --color-tercary: #c4c4c4;
@@ -32,4 +33,5 @@ h4,
 h5,
 h6 {
   font-family: var(--font-headline);
+  color: var(--color-primary);
 }
