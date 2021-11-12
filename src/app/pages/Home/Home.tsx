@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import ImageInput from '../components/ImageInput/ImageInput';
+import ImageInput from '../../components/ImageInput/ImageInput';
 import styles from './Home.module.css';
-import Progress from '../components/Progress/Progress';
-import AddDocumentForm from '../components/AddDocumentForm/AddDocumentForm';
-import useRecognizeText from '../utils/useRecognizeText';
+import Progress from '../../components/Progress/Progress';
+import AddDocumentForm from '../../components/AddDocumentForm/AddDocumentForm';
+import useRecognizeText from '../../utils/useRecognizeText';
 
 export default function Home(): JSX.Element {
   const [imgURL, setImgURL] = useState<string | null>(null);
