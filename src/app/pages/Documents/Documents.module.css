@@ -9,6 +9,8 @@ h1 {
 }
 
 .documents {
+  display: grid;
+  position: relative;
   border-radius: 3rem;
   padding: 3em 6em 1em 2em;
   background-color: var(--color-card-background);
@@ -18,4 +20,11 @@ h1 {
 
 .documents::-webkit-scrollbar {
   display: none;
+}
+
+.link {
+  position: sticky;
+  bottom: 1em;
+  margin-right: -4em;
+  justify-self: end;
 }

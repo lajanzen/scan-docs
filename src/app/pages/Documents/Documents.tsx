@@ -1,36 +1,26 @@
-import React, { useEffect, useState } from 'react';
-import DocPreview, {
-  DocPreviewProps,
-} from '../../components/DocPreview/DocPreview';
+import React from 'react';
+import AddDocumentLink from '../../components/AddDocumentLink/AddDocumentLink';
+import DocPreview from '../../components/DocPreview/DocPreview';
+import useDocuments from '../../utils/useDocuments';
 import styles from './Documents.module.css';
 
 export default function Documents(): JSX.Element {
-  const [documents, setDocuments] = useState<DocPreviewProps[]>([]);
-
-  useEffect(() => {
-    async function fetchDocuments() {
-      const response = await fetch('https://json-server.machens.dev/docs');
-      console.log(response);
-      const newDocuments = await response.json();
-      setDocuments(newDocuments);
-    }
-
-    fetchDocuments();
-  }, []);
-
-  console.log(documents);
+  const documents = useDocuments();
 
   return (
     <section className={styles.container}>
       <h1 className={styles.h1}>Your Docs</h1>
       <div className={styles.documents}>
-        {documents.map((document) => (
+        {documents?.map((document) => (
           <DocPreview
             key={document.id}
             title={document.title}
             text={document.text}
           />
         ))}
+        <div className={styles.link}>
+          <AddDocumentLink />
+        </div>
       </div>
     </section>
   );
