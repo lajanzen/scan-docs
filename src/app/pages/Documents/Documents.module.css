@@ -1,11 +1,13 @@
 .container {
   display: grid;
-  justify-content: center;
+  justify-items: center;
+  gap: 1em;
+  margin-top: 2em;
 }
 
 h1 {
   font-size: 2rem;
-  justify-self: center;
+  margin: 0;
 }
 
 .documents {

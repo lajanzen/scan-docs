@@ -1,0 +1,19 @@
+.search {
+  display: flex;
+  column-gap: 0.1em;
+}
+
+.input {
+  border-radius: 1em;
+}
+
+.input::placeholder {
+  padding-left: 0.5em;
+}
+
+.submit {
+  border-radius: 1em;
+  border: none;
+  background-color: var(--color-secondary);
+  color: var(--color-card-background);
+}
