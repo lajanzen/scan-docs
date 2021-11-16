@@ -1,0 +1,32 @@
+.container {
+  display: grid;
+  justify-items: center;
+  gap: 1em;
+  margin-top: 2em;
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 0;
+}
+
+.documents {
+  display: grid;
+  position: relative;
+  border-radius: 3rem;
+  padding: 3em 6em 1em 2em;
+  background-color: var(--color-card-background);
+  height: 80vh;
+  overflow: scroll;
+}
+
+.documents::-webkit-scrollbar {
+  display: none;
+}
+
+.link {
+  position: sticky;
+  bottom: 1em;
+  margin-right: -4em;
+  justify-self: end;
+}

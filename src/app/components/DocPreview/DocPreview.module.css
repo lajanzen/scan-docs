@@ -1,0 +1,16 @@
+.link {
+  font-family: var(--font-headline);
+  color: var(--color-secondary);
+}
+
+.text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  /* stylelint-disable */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  padding-left: 1em;
+  width: 10rem;
+  font-size: 0.8rem;
+}
